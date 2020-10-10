@@ -17,6 +17,7 @@ firebase.initializeApp(firebaseConfig);
 let database = firebase.database();
 let input = document.getElementById("message");
 let name = document.getElementById("username");
+let send = document.getElementById("button")
 
 input.addEventListener('keypress',function(event) {
   if(event.key == 'Enter') {
@@ -27,6 +28,16 @@ input.addEventListener('keypress',function(event) {
     input.value = ""
   
   }
+})
+
+send.addEventListener('click',function(event) {
+  database.ref("messages").push({
+    name: name.value,
+    value: input.value
+  })
+  input.value = ""
+  
+  
 })
 
 database.ref('messages').on('child_added', function (message) {
