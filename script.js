@@ -44,7 +44,7 @@ database.ref('messages').on('child_added', function (message) {
   div.appendChild(p);
 
   messages.appendChild(div);
-
+  messages.scrollTop = messages.scrollHeight;
 
 
 })
