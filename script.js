@@ -21,23 +21,28 @@ let send = document.getElementById("button")
 
 input.addEventListener('keypress',function(event) {
   if(event.key == 'Enter') {
-    database.ref("messages").push({
-      name: name.value,
-      value: input.value
-    })
-    input.value = ""
-  
+    if(name.value != "") {
+      if(input.value != "") {
+      database.ref("messages").push({
+        name: name.value,
+        value: input.value
+      })
+      input.value = ""
+      }
+    }
   }
 })
 
 send.addEventListener('click',function(event) {
-  database.ref("messages").push({
-    name: name.value,
-    value: input.value
-  })
-  input.value = ""
-  
-  
+    if(name.value != "") {
+      if(input.value != "") {
+        database.ref("messages").push({
+          name: name.value,
+          value: input.value
+        })
+        input.value = ""
+      }
+    }
 })
 
 database.ref('messages').on('child_added', function (message) {
